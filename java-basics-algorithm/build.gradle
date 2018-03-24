@@ -1,0 +1,5 @@
+dependencies {
+    compile (
+            project(":java-basics-commons")
+    )
+}

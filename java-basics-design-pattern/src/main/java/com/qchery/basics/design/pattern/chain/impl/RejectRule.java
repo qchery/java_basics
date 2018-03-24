@@ -1,4 +1,6 @@
-package com.qchery.basics.design.pattern.chain;
+package com.qchery.basics.design.pattern.chain.impl;
+
+import com.qchery.basics.design.pattern.chain.*;
 
 /**
  * @author Chery

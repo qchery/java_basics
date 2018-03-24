@@ -1,5 +1,9 @@
 package com.qchery.basics.design.pattern.chain;
 
+import com.qchery.basics.design.pattern.chain.impl.ErrorRule;
+import com.qchery.basics.design.pattern.chain.impl.RejectRule;
+import com.qchery.basics.design.pattern.chain.impl.WarnRule;
+
 /**
  * @author Chery
  * @date 2017/8/9 - 下午11:24
@@ -17,7 +21,6 @@ public class RuleChainTest {
         ruleChain.addUnit(subChain);
 
         RuleContext ruleContext = new RuleContext();
-        ruleContext.setLoanApplyFact(new LoanApplyFact());
 
         RuleResultContainer container = new RuleResultContainer();
         ruleChain.setStopWhenReject(true);

@@ -1,4 +1,5 @@
 rootProject.name = 'java-basics'
 include 'java-basics-algorithm'
 include 'java-basics-commons'
+include 'java-basics-design-pattern'
 

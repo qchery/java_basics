@@ -6,8 +6,8 @@ package com.qchery.basics.design.pattern.proxy;
  */
 public interface SystemMgr {
 
-    String getUser();
+    String updateUser();
 
-    String getRole();
+    String updateRole();
 
 }

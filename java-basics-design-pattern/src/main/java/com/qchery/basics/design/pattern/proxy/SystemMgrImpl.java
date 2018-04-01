@@ -7,12 +7,14 @@ package com.qchery.basics.design.pattern.proxy;
 public class SystemMgrImpl implements SystemMgr {
 
     @Override
-    public String getUser() {
+    public String updateUser() {
+        System.out.println("更新用户信息...");
         return "张三";
     }
 
     @Override
-    public String getRole() {
+    public String updateRole() {
+        System.out.println("更新角色信息...");
         return "管理员";
     }
 

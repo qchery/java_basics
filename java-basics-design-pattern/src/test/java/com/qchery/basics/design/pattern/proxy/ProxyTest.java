@@ -1,11 +1,9 @@
 package com.qchery.basics.design.pattern.proxy;
 
-import com.qchery.basics.design.pattern.proxy.cglib.SystemMgrMethodInterceptor;
-import com.qchery.basics.design.pattern.proxy.jdk.SystemMgrInvocationHandler;
-import net.sf.cglib.proxy.Enhancer;
+import com.qchery.basics.design.pattern.proxy.cglib.SystemMgrCglibProxyFactory;
+import com.qchery.basics.design.pattern.proxy.jdk.SystemMgrJdkProxyFactory;
+import com.qchery.basics.design.pattern.proxy.stc.StaticSystemMgrProxy;
 import org.junit.Test;
-
-import java.lang.reflect.Proxy;
 
 /**
  * @author Chery
@@ -16,23 +14,19 @@ public class ProxyTest {
     @Test
     public void testStaticProxy() {
         StaticSystemMgrProxy staticProxy = new StaticSystemMgrProxy(new SystemMgrImpl());
-        System.out.println(staticProxy.getUser() + " - " + staticProxy.getRole());
+        System.out.println(staticProxy.updateUser() + " - " + staticProxy.updateRole());
     }
 
     @Test
     public void testJDKProxy() {
-        SystemMgr proxyInstance = (SystemMgr) Proxy.newProxyInstance(this.getClass().getClassLoader(),
-                new Class[]{SystemMgr.class}, new SystemMgrInvocationHandler(new SystemMgrImpl()));
-        System.out.println(proxyInstance.getUser() + " - " + proxyInstance.getRole());
+        SystemMgr proxyInstance = SystemMgrJdkProxyFactory.getProxyInstance(new SystemMgrImpl());
+        System.out.println(proxyInstance.updateUser() + " - " + proxyInstance.updateRole());
     }
 
     @Test
     public void testCglibProxy() {
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(SystemMgrImpl.class);
-        enhancer.setCallback(new SystemMgrMethodInterceptor());
-        SystemMgrImpl cglibProxy = (SystemMgrImpl) enhancer.create();
-        System.out.println(cglibProxy.getUser() + " - " + cglibProxy.getRole());
+        SystemMgrImpl proxyInstance = SystemMgrCglibProxyFactory.newProxyInstance(SystemMgrImpl.class);
+        System.out.println(proxyInstance.updateUser() + " - " + proxyInstance.updateRole());
     }
 
 }

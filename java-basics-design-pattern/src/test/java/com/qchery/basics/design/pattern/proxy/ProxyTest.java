@@ -17,8 +17,8 @@ public class ProxyTest {
         System.out.println(staticProxy.updateUser() + " - " + staticProxy.updateRole());
     }
 
-    @Test
-    public void testJDKProxy() {
+    public static void main(String[] args) {
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         SystemMgr proxyInstance = SystemMgrJdkProxyFactory.getProxyInstance(new SystemMgrImpl());
         System.out.println(proxyInstance.updateUser() + " - " + proxyInstance.updateRole());
     }
